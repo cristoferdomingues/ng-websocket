@@ -66,7 +66,7 @@ webSocketApp.factory('$websocket', function($rootScope, $q, STATUS_CONEXAO, $tim
       });
     };
 
-    $rootScope.$on('WS_CLOSED', function(ev) {
+    $rootScope.$on('WS_CLOSED', function() {
       if (opts.reconnectOnClose && opts.reconnectOnClose === true) {
         $timeout(function() {
           _openConnection({
@@ -77,7 +77,7 @@ webSocketApp.factory('$websocket', function($rootScope, $q, STATUS_CONEXAO, $tim
       }
     });
 
-    $rootScope.$on('WS_OPENNED', function(ev) {
+    $rootScope.$on('WS_OPENNED', function() {
       deferred.resolve();
     });
 
@@ -131,7 +131,7 @@ webSocketApp.factory('$websocket', function($rootScope, $q, STATUS_CONEXAO, $tim
     return deferred.promise;
   };
 
-  var _onOpen = function(evt) {
+  var _onOpen = function() {
 
     console.log('WS Conectado!');
 
@@ -155,7 +155,7 @@ webSocketApp.factory('$websocket', function($rootScope, $q, STATUS_CONEXAO, $tim
     $rootScope.$broadcast('WS_ERROR', evt);
   };
 
-  var _onClose = function(evt) {
+  var _onClose = function() {
 
     console.log('WS Fechado');
 
